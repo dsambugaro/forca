@@ -3,10 +3,10 @@
 #include <time.h>
 #include <string.h>
 
-void zeraVetor(char v[], int tam){
+void preencheVetor(char v[], int tam, char c){
      int i;
      for ( i = 0; i < tam; i++) {
-          v[i] = '0';
+          v[i] = c;
      }
 }
 
@@ -28,6 +28,7 @@ int definePalavra(int N){
 void pegaPalavras(FILE *arquivo, int lin, char p[], int max){
     int i;
     int palavraSelecionada;
+
     palavraSelecionada = definePalavra(lin);
     for ( i = 0; i < lin; i++) {
         fgets(p, max, arquivo);
@@ -37,13 +38,58 @@ void pegaPalavras(FILE *arquivo, int lin, char p[], int max){
     }
 }
 
-void fim(int S, int pontos) {
-    if (S == 1) {
-        printf("\nPARABÉNS VOCÊ CONSEGUIU! ^^\n");
-        printf("Pontuação: %d", pontos);
-    } else if (S == 0){
-        printf("\nVOCÊ PERDEU! u.u\n");
-        printf("Pontuação: %d", pontos);
+void imprimeCaveira(){
+    printf("\t█████████████████████████████████\n");    //  ███████████████████████████
+    printf("\t███████▀░░░░░░░░░░░░░░░░░▀███████\n");    //  ████▀░░░░░░░░░░░░░░░░░▀████
+    printf("\t██████│░░░░░░░░░░░░░░░░░░░│██████\n");    //  ███│░░░░░░░░░░░░░░░░░░░│███
+    printf("\t█████▌│░░░░░░░░░░░░░░░░░░░│▐█████\n");    //  ██▌│░░░░░░░░░░░░░░░░░░░│▐██
+    printf("\t█████░└┐░░░░░░░░░░░░░░░░░┌┘░█████\n");    //  ██░└┐░░░░░░░░░░░░░░░░░┌┘░██
+    printf("\t█████░░└┐░░░░░░░░░░░░░░░┌┘░░█████\n");    //  ██░░└┐░░░░░░░░░░░░░░░┌┘░░██
+    printf("\t█████░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░█████\n");    //  ██░░┌┘▄▄▄▄▄░░░░░▄▄▄▄▄└┐░░██
+    printf("\t█████▌░│██████▌░░░▐██████│░▐█████\n");    //  ██▌░│██████▌░░░▐██████│░▐██
+    printf("\t██████░│▐███▀▀░░▄░░▀▀███▌│░██████\n");    //  ███░│▐███▀▀░░▄░░▀▀███▌│░███
+    printf("\t█████▀─┘░░░░░░░▐█▌░░░░░░░└─▀█████\n");    //  ██▀─┘░░░░░░░▐█▌░░░░░░░└─▀██
+    printf("\t█████▄░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░▄█████\n");    //  ██▄░░░▄▄▄▓░░▀█▀░░▓▄▄▄░░░▄██
+    printf("\t███████▄─┘██▌░░░░░░░▐██└─▄███████\n");    //  ████▄─┘██▌░░░░░░░▐██└─▄████
+    printf("\t████████░░▐█─┬┬┬┬┬┬┬─█▌░░████████\n");    //  █████░░▐█─┬┬┬┬┬┬┬─█▌░░█████
+    printf("\t███████▌░░░▀┬┼┼┼┼┼┼┼┬▀░░░▐███████\n");    //  ████▌░░░▀┬┼┼┼┼┼┼┼┬▀░░░▐████
+    printf("\t████████▄░░░└┴┴┴┴┴┴┴┘░░░▄████████\n");    //  █████▄░░░└┴┴┴┴┴┴┴┘░░░▄█████
+    printf("\t██████████▄░░░░░░░░░░░▄██████████\n");    //  ███████▄░░░░░░░░░░░▄███████
+    printf("\t█████████████████████████████████\n");    //  ███████████████████████████
+}
+
+void imprimeTaca(){
+    printf("\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    printf("\t░░░░░░█████████████████████░░░░░░\n");  // ░░░░░░█████████████████████░░░░░░
+    printf("\t░░░░░░░██░░░░░░░░░░░░░░░██░░░░░░░\n");  // ░░░░░░░██               ██░░░░░░░
+    printf("\t░░░░░░░░██░░░░░▀█░▀░░░░██░░░░░░░░\n");  // ░░░░░░░░██     ▀█ ▀    ██░░░░░░░░
+    printf("\t░░░░░░░░░██░░░░░█░░░░░██░░░░░░░░░\n");  // ░░░░░░░░░██     █     ██░░░░░░░░░
+    printf("\t░░░░░░░░░░██░░░▀▀▀░░░██░░░░░░░░░░\n");  // ░░░░░░░░░░██   ▀▀▀   ██░░░░░░░░░░
+    printf("\t░░░░░░░░░░░██░░░░░░░██░░░░░░░░░░░\n");  // ░░░░░░░░░░░██       ██░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░███████░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░███████░░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░░░███░░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░░███░░░░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░░░███░░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░░███░░░░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░░█████░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░█████░░░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░█████████░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░█████████░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░█████████████░░░░░░░░░░\n");  // ░░░░░░░░░░█████████████░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+    printf("\t░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░\n");  // ░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░░
+}
+
+void fim(int V, int pontos, char palavra[]) {
+    if (V == 1) {
+        printf("\n\n");
+        printf("\n\tPARABÉNS VOCÊ CONSEGUIU! ^^\n");
+        printf("\tPontuação: %d", pontos);
+        printf("\n\n");
+    } else if (V == 0){
+
+        printf("\n\n\tA palavra era: %s\n", palavra);
+        imprimeCaveira();
+        printf("\n\n");
+        printf("\tVOCÊ PERDEU! u.u\n\n");
+        printf("\tPontuação: %d", pontos);
     }
     printf("\n\n");
     exit(0);
@@ -170,10 +216,10 @@ void jogaForca(char palavra[], char forcaPal[], int t, int *p, int *e, char letr
     checaFinal = checaFim(t, forcaPal);
 
     if (checaFinal == 1) {
-        fim(1, pontos);
+        fim(1, pontos, palavra);
     } else {
         if (erros == 6) {
-        fim(0, pontos);
+        fim(0, pontos, palavra);
         } else {
 
             while (entrada == 0) {
@@ -222,37 +268,73 @@ void forcaBack(char palavra[], char forcaPal[]){
     forcaPal[i] = '\n';
 }
 
+int contaLinhas(FILE *arquivo){
+    int linhas = 0;
+    char c;
+    while (!feof(arquivo)) {
+        c = fgetc(arquivo);
+        if (c == '\n') {
+            linhas++;
+        }
+    }
+    return linhas;
+}
 
-int main(int argc, char const *argv[]) {
-    int linhas, i, tamanho;
-    int maximoLetras;
-    int pontos = 0, erros = 0, vezes = 0;
-    char letrasUtilizadas[26];
+FILE* abrirArquivo(){
+    FILE* arquivo;
+    arquivo=fopen("palavras.txt", "r");
 
-    zeraVetor(letrasUtilizadas, 26);
-
-    FILE *palavrasArq;
-    palavrasArq=fopen("palavras.txt", "r");
-
-    if (palavrasArq == NULL) {
+    if (arquivo == NULL) {
         printf("Erro ao abrir arquivo!\n");
         exit(1);
     }
+    return arquivo;
+}
 
-    fscanf(palavrasArq, "%d", &linhas);
-    fscanf(palavrasArq, "%d", &maximoLetras);
-    char palavra[maximoLetras];
+int contaLetrasPalavra(char aux[]){
+    int i, letras = 0;
+    for ( i = 0; aux[i] != '\n'; i++) {
+        letras++;
+    }
+    return letras;
+}
 
-    pegaPalavras(palavrasArq, linhas, palavra, maximoLetras);
+void passaPalavra(char palavra[], char aux[], int max){
+    int i;
+    for ( i = 0; i <= max ; i++) {
+        palavra[i] = aux[i];
+    }
+}
+
+int main(int argc, char const *argv[]) {
+    int linhas;
+    int maximoLetras;
+    int pontos = 0, erros = 0, vezes = 0;
+    char letrasUtilizadas[26];
+    char aux[47];
+
+    preencheVetor(letrasUtilizadas, 26, '_');
+
+    FILE *palavrasArq;
+    palavrasArq = abrirArquivo();
+
+    linhas = contaLinhas(palavrasArq);
+    fclose(palavrasArq);
+    palavrasArq = abrirArquivo();
+
+    pegaPalavras(palavrasArq, linhas, aux, 47);
     fclose(palavrasArq);
 
-    for (i = 0; palavra[i] != '\n'; i++);
-    char forcaPal[i+2];
-
-    tamanho = i;
+    maximoLetras = contaLetrasPalavra(aux);
+    char *palavra;
+    char *forcaPal;
+    // char palavra[maximoLetras+1];
+    palavra = (char*)calloc(maximoLetras, sizeof(char));
+    forcaPal = (char*)calloc(maximoLetras, sizeof(char));
+    passaPalavra(palavra, aux, maximoLetras);
 
     forcaBack(palavra, forcaPal);
-    jogaForca(palavra, forcaPal, tamanho, &pontos, &erros, letrasUtilizadas, &vezes);
+    jogaForca(palavra, forcaPal, maximoLetras, &pontos, &erros, letrasUtilizadas, &vezes);
 
     return 0;
 }
